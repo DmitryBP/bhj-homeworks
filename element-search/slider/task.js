@@ -7,37 +7,36 @@ let rightFunction = () => {
   if (i < images.length - 1) {
     images[i].classList.remove("slider__item_active");
     images[i + 1].classList.add("slider__item_active");
-    i++
-    
+    i++;
   } else {
     images[i].classList.remove("slider__item_active");
-    i = 0
+    i = 0;
     images[i].classList.add("slider__item_active");
   }
-}
+};
 
 let leftFunction = () => {
-  console.log (`test111 ${i}`)
+  console.log(`test111 ${i}`);
   if (i > 0) {
     images[i].classList.remove("slider__item_active");
     images[i - 1].classList.add("slider__item_active");
-    i--
-    console.log (`if left ${i}`)
+    i--;
+    console.log(`if left ${i}`);
   } else {
     images[images.length - 1].classList.remove("slider__item_active");
-    i = images.length - 1
+    i = images.length - 1;
     images[i].classList.add("slider__item_active");
-    console.log (`else left ${i}`)
+    console.log(`else left ${i}`);
   }
-}
-
-right.onclick = () => {   
-  rightFunction()
-    
 };
 
-left.onclick = () => {
-  leftFunction()
-};
+right.onclick = rightFunction;
 
-console.log (`test ${i}`)
+left.onclick = leftFunction;
+console.log(`test ${i}`);
+
+
+// test = images.findIndex(function(item) {               // не получается найти позицию активного слайда
+//   item.classList.contains("slider__item_active")
+// })
+// console.log(test)

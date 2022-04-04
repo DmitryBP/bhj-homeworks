@@ -4,7 +4,7 @@ let links = Array.from(document.getElementsByClassName('menu__link'))
 links.forEach(link => {
   link.onclick = () => {
     if (link.nextElementSibling) {
-      link.nextElementSibling.classList.add('menu_active')
+      link.nextElementSibling.classList.toggle('menu_active')
       return false
     }
   }
