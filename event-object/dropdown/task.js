@@ -1,9 +1,13 @@
-console.log (`i'm starting`)
-// let button = document.getElementsByClassName('dropdown__list')
 let button = document.querySelector('.dropdown__value')
-button.onclick =  function() {
-
-  console.log ('button')
-  // this.classList.add('dropdown__list_active')
+let list = document.querySelector('.dropdown__list')
+let listItems = document.querySelectorAll('.dropdown__link')
+button.onclick = () => {
+list.classList.toggle('dropdown__list_active')
 }
-console.log (button)
+listItems.forEach(listItem => {
+listItem.onclick = () => {
+button.textContent = listItem.textContent
+list.classList.remove('dropdown__list_active')
+return false
+}
+});
