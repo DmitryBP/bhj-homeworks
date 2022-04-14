@@ -4,7 +4,7 @@ let i = 0
 
 console.log(ads[0].dataset)
 
-setInterval(() => {
+let timerId = setTimeout(function speedSwitch() {
   
   if (i < ads.length-1) {
     ads[i].classList.remove('rotator__case_active')
@@ -16,10 +16,7 @@ setInterval(() => {
     i = 0
     ads[i].classList.add('rotator__case_active')
   }
-  let speed = ads[i].dataset.speed  // ??? не разобрался как передать speed в параметр скорости settimout
-  
-  console.log (speed)
-}, 1000 )
-
-
+  let speed = ads[i].dataset.speed 
+  timerId = setTimeout(speedSwitch, speed)
+}, 100)
 

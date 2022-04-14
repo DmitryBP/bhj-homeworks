@@ -13,8 +13,10 @@
 // Задание №1.1
 
 let timer = document.getElementById("timer");
+let link = document.getElementById("link");
+console.log(link)
 let hh, mm, ss;
-timer.textContent = `${(hh = 04)}:${(mm = 30)}:${(ss = 05)}`;
+timer.textContent = `${(hh = 00)}:${(mm = 00)}:${(ss = 05)}`;
 
 let dozenCondition = () => {
   if (mm >= 10 && ss < 10) {
@@ -43,7 +45,9 @@ let secondTimer = () => {
       dozenCondition();
     } else if (hh == 0 && mm == 0 && ss == 0) {
       clearInterval(interval);
-      alert("Вы победили в конкурсе");
+      link.click()
+      // alert("Вы победили в конкурсе");
+      // window.location = 'ds.cdn15.deliciouspeaches.com'
     }
   }, 1000);
 };
