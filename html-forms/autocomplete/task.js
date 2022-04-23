@@ -81,7 +81,19 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    return [
+  //  console.log(this.input.options)
+  let arr = []
+  let value = {
+    text:text,
+    value: this.value
+  }
+  arr.push(value)                      // не понятно как поместить в мессив новый элемент, а не изменять существующий 
+   console.log(arr)
+  //  console.log(text)
+  //  console.log(this.input[0].textContent)
+  //  console.log(this.input[0].textContent.includes(text))
+  
+    return [                          //Нужно ли изменять исходный массив, не понятно как можно использовать не именованный масив 
       {
         text: 'Чубакка',
         value: '1'
