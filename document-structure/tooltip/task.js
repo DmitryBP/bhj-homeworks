@@ -4,41 +4,34 @@ links.forEach((link, index) => {
     link.onclick = () => {
         let position = link.getBoundingClientRect()
         let dataPosition = link.getAttribute('data-position')
- 
+        let coordinateX = position.x
+        let coordinateY = position.bottom
+
         if (!flag) {
-            if(dataPosition == 'bottom'){
-                link.insertAdjacentHTML('afterend', `
-                <div class="tooltip" style="left: ${position.x}px; top: ${position.bottom}px; position: absolute">
-                ${link.title}
-                </div>
-                `)
-            }
             if(dataPosition == 'top'){
-                link.insertAdjacentHTML('afterend', `
-                <div class="tooltip" style="left: ${position.x}px; top: ${position.top-30}px; position: absolute">
-                ${link.title}
-                </div>
-                `)
-            }
+                coordinateY = position.top - 30
+            } else
             if(dataPosition == 'right'){
-                link.insertAdjacentHTML('afterend', `
-                <div class="tooltip" style="left: ${position.x + position.width}px; top: ${position.top-30}px; position: absolute">
-                ${link.title}
-                </div>
-                `)
-            }
+                coordinateX = position.x + position.width
+                coordinateY = position.top - 30
+            } else
             if(dataPosition == 'left'){
-                link.insertAdjacentHTML('afterend', `
-                <div class="tooltip" style="left: ${position.x - position.width}px; top: ${position.top-30}px; position: absolute">
-                ${link.title}
-                </div>
-                `)
-            }
+                coordinateX = position.x - position.width
+                coordinateY = position.top - 30
+            } 
+            
+            link.insertAdjacentHTML('afterend', `
+            <div class="tooltip" style="left: ${coordinateX}px; top: ${coordinateY}px; position: absolute">
+            ${link.title}
+            </div>
+            `)
             flag = true
         }
- 
-        link.nextElementSibling.classList.toggle('tooltip_active')
- 
+
+        if (link.nextElementSibling.classList.contains('tooltip')) {
+            link.nextElementSibling.classList.toggle('tooltip_active')
+            }
+
         let activTips = document.querySelectorAll('.tooltip_active')
         activTips.forEach(activTip => {
             if(activTip !== links[index].nextElementSibling){

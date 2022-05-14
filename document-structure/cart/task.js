@@ -30,9 +30,9 @@ addToCart.forEach(addButton => {
     
     let cartProducts = Array.from(cart.children)
     
-    let findInCart = cartProducts.find(prod=> {
-      return prod.getAttribute('data-id') == addedProductId
-    })
+    let findInCart = cartProducts.find(prod => 
+      prod.getAttribute('data-id') == addedProductId
+    )
     
     let addedProductIndex = cartProducts.indexOf(findInCart)
     
