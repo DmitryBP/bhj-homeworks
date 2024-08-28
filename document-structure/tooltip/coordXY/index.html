@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .element {
+        margin: 50px;
+        border: 1px solid red;
+        width: 100px;
+        height: 25px;
+      }
+      .tip {
+        border: 1px solid blue;
+        width: 100px;
+        height: 20px;
+      }
+    </style>
+
+    <h1>Шпаргалка по позиционированию элементов</h1>
+    <div class="element">Элемент</div>
+    <button class="btnTop">Элемент с верху с права</button>
+
+    <script>
+      const btnTop = document.querySelector('.btnTop');
+      const element = document.querySelector('.element');
+
+      const handler = () => {
+        const position = element.getBoundingClientRect();
+        const { x, y, width, height } = position;
+        const tip = document.createElement('div');
+        tip.classList.add('tip');
+        tip.innerHTML = 'Подсказка';
+        element.append(tip);
+        const heightTip = tip.getBoundingClientRect().height; // получили высоту подсказки
+        tip.style.position = 'absolute';
+        tip.style.top = `${y - heightTip + window.pageYOffset}px`;
+        tip.style.left = `${x + width + window.pageXOffset}px`;
+        console.log(y, height, window.pageYOffset);
+      };
+
+      btnTop.addEventListener('click', handler);
+    </script>
+  </body>
+</html>
