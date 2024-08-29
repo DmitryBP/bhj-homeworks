@@ -3,7 +3,6 @@ const TASK_TEMPLATE = `
     {taskText}
   </div>
   <a href="#" class="task__remove">&times;</a>`;
-console.log(localStorage);
 const clearBtn = document.querySelector('.clear');
 const inputElement = document.querySelector('.tasks__input');
 const addBtnElement = document.querySelector('.tasks__add');
