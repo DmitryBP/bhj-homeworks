@@ -1,5 +1,5 @@
 const LOADER_ELEMENT = document.querySelector('#loader');
-let itemsElement = document.querySelector('#items');
+const itemsElement = document.querySelector('#items');
 
 const CASH_PARAMETERS = {
   text: 'Загружено из Кэш',
