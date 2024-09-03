@@ -37,17 +37,23 @@ const loadSavedValute = async () => {
 
 const fetchValute = async () => {
   try {
-    const response = await fetch('https://students.netoservices.ru/nestjs-backend/slow-get-courses');
-    const data = await response.json();
-    const valute = data.response.Valute;
+    const xhr = new XMLHttpRequest();
+    const URL = 'https://students.netoservices.ru/nestjs-backend/slow-get-courses';
 
-    toggleLoader();
-    itemsElement.remove();
-    const newItemsElement = document.createElement('div');
-    document.querySelector('.card>h1').after(newItemsElement);
-    itemsElement = newItemsElement;
-    localStorage.setItem('valute', JSON.stringify(valute));
-    renderCurses(SERVER_PARAMETERS, valute);
+    xhr.open('GET', URL);
+    xhr.send();
+    xhr.onload = () => {
+      const data = JSON.parse(xhr.response);
+      const valute = data.response.Valute;
+
+      toggleLoader();
+      itemsElement.remove();
+      const newItemsElement = document.createElement('div');
+      document.querySelector('.card>h1').after(newItemsElement);
+      itemsElement = newItemsElement;
+      localStorage.setItem('valute', JSON.stringify(valute));
+      renderCurses(SERVER_PARAMETERS, valute);
+    };
   } catch (error) {
     console.error(error);
   }
