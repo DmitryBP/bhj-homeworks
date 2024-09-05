@@ -36,6 +36,9 @@
   font-weight: 500;
   box-shadow: none;
 }
+.btn__red {
+  color: red
+}
 
 .welcome {
   display: none;
@@ -44,4 +47,14 @@
 .welcome_active {
   display: block;
   text-align: center;
+}
+
+.message {
+  color: red;
+  background-color: #fdb7cd;
+  border: 1px solid rgb(254, 130, 130);
+  border-radius: 5px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
 }
